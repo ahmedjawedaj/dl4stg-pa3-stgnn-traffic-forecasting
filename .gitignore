@@ -1,0 +1,11 @@
+data/raw/
+data/*.npz
+results/runs/*.pt
+results/runs/*_testpred.npz
+results/runs/*_adj*.npy
+__pycache__/
+.venv/
+*.pyc
+.DS_Store
+report/*.tex
+report/build/

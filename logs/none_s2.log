@@ -1,0 +1,18 @@
+/home/claude/repo/pa3/data.py:54: RuntimeWarning: Mean of empty slice
+  mean = np.nanmean(tr, axis=0)
+/usr/local/lib/python3.13/site-packages/numpy/lib/_nanfunctions_impl.py:1997: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  var = nanvar(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/claude/repo/pa3/train.py:42: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
+  res = {"MAE": float(abs_sum.sum() / cnt.sum()), "RMSE": float(np.sqrt(sq_sum.sum() / cnt.sum())),
+{"epoch": 1, "train_mae": 79.33330105779818, "val_mae": 57.87437427453207, "val_rmse": 92.82771616113357, "sec": 42.772550314999535}
+{"epoch": 2, "train_mae": 56.536585274507004, "val_mae": 57.63920330293308, "val_rmse": 92.325560774324, "sec": 43.690114379998704}
+{"epoch": 3, "train_mae": 55.77515238360629, "val_mae": 58.81004409396642, "val_rmse": 93.36638067428207, "sec": 42.36134270700131}
+{"epoch": 4, "train_mae": 55.26018475530795, "val_mae": 57.84650832801406, "val_rmse": 91.1152987136202, "sec": 43.45940779099874}
+{"epoch": 5, "train_mae": 54.939649564538065, "val_mae": 56.18864899465268, "val_rmse": 89.6398533442869, "sec": 41.21089716499955}
+{"epoch": 6, "train_mae": 54.7041110888205, "val_mae": 55.83014996162544, "val_rmse": 90.08020795716384, "sec": 44.00527676599995}
+{"epoch": 7, "train_mae": 54.291921612126366, "val_mae": 54.70365602890223, "val_rmse": 88.62474637866863, "sec": 44.0966578080006}
+{"epoch": 8, "train_mae": 54.06781946679065, "val_mae": 59.09135690416678, "val_rmse": 94.85147674076266, "sec": 42.73642935799944}
+{"epoch": 9, "train_mae": 53.85810956277483, "val_mae": 54.752151946618824, "val_rmse": 88.51372197540967, "sec": 42.68557581099958}
+{"epoch": 10, "train_mae": 53.733905284999715, "val_mae": 55.48195415921204, "val_rmse": 88.74187062656799, "sec": 40.84945149899977}
+{"epoch": 11, "train_mae": 53.50615365561675, "val_mae": 55.03688832168249, "val_rmse": 89.02051118070207, "sec": 41.570482925999386}
+FINAL none_s2 {"val": 54.70365602890223, "test_mae": 62.73272867535548, "test_rmse": 98.8764958776844, "train_time": 469.43818652599657, "epochs": 11}

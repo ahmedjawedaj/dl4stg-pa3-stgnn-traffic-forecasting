@@ -1,0 +1,16 @@
+/home/claude/repo/pa3/data.py:54: RuntimeWarning: Mean of empty slice
+  mean = np.nanmean(tr, axis=0)
+/usr/local/lib/python3.13/site-packages/numpy/lib/_nanfunctions_impl.py:1997: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  var = nanvar(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/claude/repo/pa3/train.py:42: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
+  res = {"MAE": float(abs_sum.sum() / cnt.sum()), "RMSE": float(np.sqrt(sq_sum.sum() / cnt.sum())),
+{"epoch": 1, "train_mae": 79.06881984161767, "val_mae": 57.37065560228253, "val_rmse": 92.7192556910735, "sec": 156.50087975600036}
+{"epoch": 2, "train_mae": 57.31528378401515, "val_mae": 59.33044137465152, "val_rmse": 93.558093355921, "sec": 58.66127831999984}
+{"epoch": 3, "train_mae": 55.9485761159539, "val_mae": 56.056570234715245, "val_rmse": 90.720347474313, "sec": 40.96622602900061}
+{"epoch": 4, "train_mae": 55.699392058158836, "val_mae": 55.81066658882937, "val_rmse": 90.11764081306599, "sec": 156.90122556200004}
+{"epoch": 5, "train_mae": 55.35021222918846, "val_mae": 55.70784393590138, "val_rmse": 89.76295796567537, "sec": 43.99415824699918}
+{"epoch": 6, "train_mae": 54.9549365990366, "val_mae": 56.337386596023954, "val_rmse": 90.79947283220471, "sec": 46.21957400700012}
+{"epoch": 7, "train_mae": 54.927233788050806, "val_mae": 56.56123141759627, "val_rmse": 90.56814288833183, "sec": 44.87164975900032}
+{"epoch": 8, "train_mae": 54.43039865962795, "val_mae": 58.91589126345354, "val_rmse": 93.30556187179347, "sec": 43.010440483999446}
+{"epoch": 9, "train_mae": 54.46087257371357, "val_mae": 57.62951760768645, "val_rmse": 92.11949994920718, "sec": 40.583524697999565}
+FINAL none_s1 {"val": 55.70784393590138, "test_mae": 63.16364035472823, "test_rmse": 99.22710203025265, "train_time": 631.7089568619995, "epochs": 9}

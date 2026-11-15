@@ -1,0 +1,99 @@
+/home/claude/repo/pa3/data.py:54: RuntimeWarning: Mean of empty slice
+  mean = np.nanmean(tr, axis=0)
+/usr/local/lib/python3.13/site-packages/numpy/lib/_nanfunctions_impl.py:1997: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  var = nanvar(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/claude/repo/pa3/train.py:42: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
+  res = {"MAE": float(abs_sum.sum() / cnt.sum()), "RMSE": float(np.sqrt(sq_sum.sum() / cnt.sum())),
+{"epoch": 1, "train_mae": 77.24477800602035, "val_mae": 61.53622979813037, "val_rmse": 95.74342422955873, "sec": 46.60933180299992}
+{"epoch": 2, "train_mae": 57.20123345908355, "val_mae": 57.16606268005091, "val_rmse": 91.62701296865035, "sec": 48.29907955700003}
+{"epoch": 3, "train_mae": 55.96818868362622, "val_mae": 56.68595683410185, "val_rmse": 90.91718215167974, "sec": 48.78066977399999}
+{"epoch": 4, "train_mae": 55.38620946359548, "val_mae": 55.91529791027506, "val_rmse": 89.64374508547755, "sec": 47.91180019900003}
+{"epoch": 5, "train_mae": 54.82284830784754, "val_mae": 56.84637083925773, "val_rmse": 91.49749794066142, "sec": 47.50103852799998}
+{"epoch": 6, "train_mae": 54.5538532208441, "val_mae": 58.2212575511252, "val_rmse": 94.5860993106497, "sec": 56.853127032999964}
+{"epoch": 7, "train_mae": 54.46477578029389, "val_mae": 56.98378755867434, "val_rmse": 91.47574028312148, "sec": 45.90285674500001}
+{"epoch": 8, "train_mae": 54.290193665440185, "val_mae": 56.31783410710553, "val_rmse": 89.17810577889462, "sec": 46.58593556400001}
+FINAL none_s0 {"val": 55.91529791027506, "test_mae": 63.840670963587364, "test_rmse": 100.06264339746787, "train_time": 388.4438392029999, "epochs": 8}
+/home/claude/repo/pa3/data.py:54: RuntimeWarning: Mean of empty slice
+  mean = np.nanmean(tr, axis=0)
+/usr/local/lib/python3.13/site-packages/numpy/lib/_nanfunctions_impl.py:1997: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  var = nanvar(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/claude/repo/pa3/train.py:42: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
+  res = {"MAE": float(abs_sum.sum() / cnt.sum()), "RMSE": float(np.sqrt(sq_sum.sum() / cnt.sum())),
+{"epoch": 1, "train_mae": 76.06605342177095, "val_mae": 57.18868089108319, "val_rmse": 91.69248001246831, "sec": 58.34618206699997}
+{"epoch": 2, "train_mae": 55.666035872773826, "val_mae": 60.83017416736291, "val_rmse": 94.51710567409141, "sec": 56.60970579700006}
+{"epoch": 3, "train_mae": 54.211337119069476, "val_mae": 55.97003859710424, "val_rmse": 88.12328724807153, "sec": 54.73987715999988}
+{"epoch": 4, "train_mae": 53.4417837869057, "val_mae": 55.24953674296132, "val_rmse": 88.2410178692281, "sec": 58.5066422939999}
+{"epoch": 5, "train_mae": 52.513600653420816, "val_mae": 54.65271894982364, "val_rmse": 87.34298754572534, "sec": 57.345306503000074}
+{"epoch": 6, "train_mae": 51.87872766797008, "val_mae": 52.797888326438304, "val_rmse": 85.1856618188064, "sec": 58.71596601899978}
+{"epoch": 7, "train_mae": 51.53506284897879, "val_mae": 55.57157024469176, "val_rmse": 88.78779854445224, "sec": 60.40283262599996}
+{"epoch": 8, "train_mae": 51.2482771187315, "val_mae": 51.37623168673214, "val_rmse": 82.61858863337973, "sec": 56.87181334000002}
+{"epoch": 9, "train_mae": 50.779089408276946, "val_mae": 52.743180069880694, "val_rmse": 84.33512317582954, "sec": 60.65315012999986}
+{"epoch": 10, "train_mae": 50.60316017025807, "val_mae": 51.88710297999228, "val_rmse": 81.97156263040988, "sec": 59.74087237999993}
+{"epoch": 11, "train_mae": 50.43846497943927, "val_mae": 52.70652021556216, "val_rmse": 84.37238740293063, "sec": 59.32580683600008}
+{"epoch": 12, "train_mae": 50.12883781474796, "val_mae": 51.1784419105028, "val_rmse": 82.43833002392113, "sec": 58.37821664199964}
+{"epoch": 13, "train_mae": 49.86003979264279, "val_mae": 50.43151640416913, "val_rmse": 80.4282615690687, "sec": 60.03424047899989}
+{"epoch": 14, "train_mae": 49.62492703436068, "val_mae": 51.06884789339891, "val_rmse": 80.69909008129078, "sec": 62.81439536400012}
+{"epoch": 15, "train_mae": 49.668859839656534, "val_mae": 49.7725466363231, "val_rmse": 79.93116856363933, "sec": 62.95513351699992}
+{"epoch": 16, "train_mae": 49.37647360574135, "val_mae": 50.528333216197545, "val_rmse": 81.03205281058926, "sec": 63.31636342899992}
+{"epoch": 17, "train_mae": 49.34503290562031, "val_mae": 49.9368915021144, "val_rmse": 80.0381409416651, "sec": 58.61665311299976}
+{"epoch": 18, "train_mae": 49.1871418006216, "val_mae": 49.90005251550685, "val_rmse": 80.10712274075037, "sec": 55.535392566000155}
+{"epoch": 19, "train_mae": 49.024362845499006, "val_mae": 49.61884917800508, "val_rmse": 79.63322507675758, "sec": 57.07596750799985}
+{"epoch": 20, "train_mae": 48.87190350808733, "val_mae": 52.293059266499476, "val_rmse": 83.1467137286652, "sec": 56.022639848999916}
+FINAL fixed_s0 {"val": 49.61884917800508, "test_mae": 58.272664955761044, "test_rmse": 91.10532755662719, "train_time": 1176.0071576189987, "epochs": 20}
+/home/claude/repo/pa3/data.py:54: RuntimeWarning: Mean of empty slice
+  mean = np.nanmean(tr, axis=0)
+/usr/local/lib/python3.13/site-packages/numpy/lib/_nanfunctions_impl.py:1997: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  var = nanvar(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/claude/repo/pa3/train.py:42: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
+  res = {"MAE": float(abs_sum.sum() / cnt.sum()), "RMSE": float(np.sqrt(sq_sum.sum() / cnt.sum())),
+{"epoch": 1, "train_mae": 75.37058736109778, "val_mae": 58.77532290889843, "val_rmse": 91.96519300425737, "sec": 60.3721800620001}
+{"epoch": 2, "train_mae": 52.165053765413326, "val_mae": 51.86977136721861, "val_rmse": 82.82549975219375, "sec": 62.75643667699978}
+{"epoch": 3, "train_mae": 50.17580847401437, "val_mae": 52.177161028722004, "val_rmse": 83.78985896878397, "sec": 62.75362253499998}
+{"epoch": 4, "train_mae": 48.47679414731775, "val_mae": 48.44382155191978, "val_rmse": 78.87254277001605, "sec": 60.50812663400029}
+{"epoch": 5, "train_mae": 47.51634769404955, "val_mae": 47.88323015484012, "val_rmse": 77.14569511761499, "sec": 59.907437583000046}
+{"epoch": 6, "train_mae": 46.62712529361357, "val_mae": 47.98222171548398, "val_rmse": 77.92320594863205, "sec": 62.16581270200004}
+{"epoch": 7, "train_mae": 45.90886602766527, "val_mae": 46.64760116312169, "val_rmse": 75.3158310994355, "sec": 62.54657637299988}
+{"epoch": 8, "train_mae": 45.559098992408515, "val_mae": 46.428574293781764, "val_rmse": 74.97751688486169, "sec": 58.659016747999885}
+{"epoch": 9, "train_mae": 45.087850094710106, "val_mae": 47.706456710066426, "val_rmse": 75.43574087634505, "sec": 60.13161382999988}
+{"epoch": 10, "train_mae": 44.88831488465134, "val_mae": 45.84296260038552, "val_rmse": 73.44908248171012, "sec": 66.09649856399983}
+{"epoch": 11, "train_mae": 44.44490937196492, "val_mae": 45.88032665935307, "val_rmse": 73.34226179417765, "sec": 60.43781014299975}
+{"epoch": 12, "train_mae": 44.265845842483046, "val_mae": 46.46987775840091, "val_rmse": 74.86488469637851, "sec": 57.10840624299999}
+{"epoch": 13, "train_mae": 44.035028217920186, "val_mae": 46.09580935764681, "val_rmse": 74.57118180391751, "sec": 58.88730725000005}
+{"epoch": 14, "train_mae": 43.82466724444391, "val_mae": 45.31352542883553, "val_rmse": 72.66474338203656, "sec": 59.22532639800011}
+{"epoch": 15, "train_mae": 43.53354291794296, "val_mae": 45.32169743609975, "val_rmse": 73.01471269924825, "sec": 56.81551585599982}
+{"epoch": 16, "train_mae": 43.39695438183505, "val_mae": 44.68689154029328, "val_rmse": 72.34986140289766, "sec": 55.320585806000054}
+{"epoch": 17, "train_mae": 43.297186346001965, "val_mae": 44.18309168326978, "val_rmse": 71.17115719664966, "sec": 56.52861448199974}
+{"epoch": 18, "train_mae": 43.06827463869189, "val_mae": 43.896533736495435, "val_rmse": 70.8273457006447, "sec": 56.38663152400022}
+{"epoch": 19, "train_mae": 42.903943900853555, "val_mae": 44.009519663079814, "val_rmse": 71.30520789288781, "sec": 57.947834534999856}
+{"epoch": 20, "train_mae": 42.838494702115085, "val_mae": 45.15785014890802, "val_rmse": 72.89109651840411, "sec": 57.38921232499979}
+FINAL adaptive_s0 {"val": 43.896533736495435, "test_mae": 53.01949159492087, "test_rmse": 83.41616072102153, "train_time": 1191.944566269999, "epochs": 20}
+/home/claude/repo/pa3/data.py:54: RuntimeWarning: Mean of empty slice
+  mean = np.nanmean(tr, axis=0)
+/usr/local/lib/python3.13/site-packages/numpy/lib/_nanfunctions_impl.py:1997: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  var = nanvar(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/claude/repo/pa3/train.py:42: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
+  res = {"MAE": float(abs_sum.sum() / cnt.sum()), "RMSE": float(np.sqrt(sq_sum.sum() / cnt.sum())),
+/home/claude/repo/pa3/train.py:123: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  rec["alpha"] = float(model.alpha())
+{"epoch": 1, "train_mae": 75.97754614296724, "val_mae": 56.994352576248026, "val_rmse": 91.27024717577888, "sec": 59.69176363999941, "alpha": 0.41335445642471313}
+{"epoch": 2, "train_mae": 52.74928654738463, "val_mae": 52.06484551873519, "val_rmse": 84.15260002617202, "sec": 57.363648182999896, "alpha": 0.2943774461746216}
+{"epoch": 3, "train_mae": 50.498030066707315, "val_mae": 50.123434658172414, "val_rmse": 80.84391833880044, "sec": 59.06419525799993, "alpha": 0.21448653936386108}
+{"epoch": 4, "train_mae": 49.000069943064986, "val_mae": 49.88864956721242, "val_rmse": 79.90335050536858, "sec": 57.94461440699979, "alpha": 0.16364742815494537}
+{"epoch": 5, "train_mae": 47.87885262188799, "val_mae": 48.91647831683951, "val_rmse": 78.34743683697482, "sec": 57.63014320000002, "alpha": 0.130116268992424}
+{"epoch": 6, "train_mae": 47.17191160441748, "val_mae": 49.66383952218826, "val_rmse": 80.38462171228961, "sec": 58.74326937499973, "alpha": 0.106174536049366}
+{"epoch": 7, "train_mae": 46.84544410775051, "val_mae": 47.84788485960595, "val_rmse": 76.08366140598851, "sec": 56.71849194100014, "alpha": 0.08944696933031082}
+{"epoch": 8, "train_mae": 46.069709687502225, "val_mae": 47.98447506238785, "val_rmse": 76.5450652055132, "sec": 59.33948956900076, "alpha": 0.07553436607122421}
+{"epoch": 9, "train_mae": 45.66245237812536, "val_mae": 47.865214295365604, "val_rmse": 76.51931034055833, "sec": 59.56586823199996, "alpha": 0.06507155299186707}
+{"epoch": 10, "train_mae": 45.30979970157255, "val_mae": 46.330604864847366, "val_rmse": 74.82846958265968, "sec": 59.675039405999996, "alpha": 0.05696401372551918}
+{"epoch": 11, "train_mae": 44.87462126101301, "val_mae": 45.62328651710384, "val_rmse": 73.91095018962905, "sec": 60.071243604999836, "alpha": 0.05022376403212547}
+{"epoch": 12, "train_mae": 44.78345360955688, "val_mae": 46.752835399984676, "val_rmse": 75.34606470185376, "sec": 61.92169242700038, "alpha": 0.044676270335912704}
+{"epoch": 13, "train_mae": 44.36675495918983, "val_mae": 47.27725814467802, "val_rmse": 75.82769699722299, "sec": 62.15037046799989, "alpha": 0.03977594152092934}
+{"epoch": 14, "train_mae": 44.117566871295644, "val_mae": 46.42051639951389, "val_rmse": 73.18196616959965, "sec": 61.42504749799991, "alpha": 0.03589107468724251}
+{"epoch": 15, "train_mae": 44.01323588776024, "val_mae": 44.840897057277864, "val_rmse": 72.63354113161165, "sec": 61.39735405600004, "alpha": 0.03262675553560257}
+{"epoch": 16, "train_mae": 43.80838160697228, "val_mae": 45.64942986795477, "val_rmse": 73.59444645153857, "sec": 62.27663098300036, "alpha": 0.029660237953066826}
+{"epoch": 17, "train_mae": 43.60819042184965, "val_mae": 44.73916536542746, "val_rmse": 71.8472800531286, "sec": 64.01222022699949, "alpha": 0.027142291888594627}
+{"epoch": 18, "train_mae": 43.432518443123236, "val_mae": 44.156188181846794, "val_rmse": 71.70315544210925, "sec": 62.882353639999565, "alpha": 0.02501508593559265}
+{"epoch": 19, "train_mae": 43.24354810315186, "val_mae": 44.3870151988608, "val_rmse": 71.87280855216835, "sec": 66.26479984999969, "alpha": 0.0231289304792881}
+{"epoch": 20, "train_mae": 43.055141949262776, "val_mae": 43.980976920698275, "val_rmse": 71.24362466900034, "sec": 63.06976589500027, "alpha": 0.02166450396180153}
+FINAL hybrid_s0 {"val": 43.980976920698275, "test_mae": 52.61313948081729, "test_rmse": 83.02028259261311, "train_time": 1211.208001859999, "epochs": 20}

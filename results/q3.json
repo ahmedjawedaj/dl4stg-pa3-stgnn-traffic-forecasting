@@ -1,0 +1,120 @@
+{
+  "T15": 70176,
+  "N": 716,
+  "first": "2020-01-01 00:00:00",
+  "last": "2021-12-31 23:45:00",
+  "missing": {
+    "frac_5min_readings_missing": 0.05066183423046582,
+    "frac_15min_bins_all_missing": 0.050591414053603775,
+    "frac_15min_bins_partial": 0.0001646299678764581,
+    "by_year_15min": {
+      "2020": 0.040928871119150105,
+      "2021": 0.06028042970842581
+    },
+    "sensors_never_observed": 19,
+    "sensors_over_50pct_missing": 43,
+    "sensors_over_10pct_missing": 45,
+    "sensors_fully_observed": 0,
+    "timestamps_all_sensors_missing": 8,
+    "zero_valued_observed_frac": 0.0014600662724313742,
+    "gap_count": 2699,
+    "gap_len_quantiles_steps": {
+      "0.5": 4.0,
+      "0.9": 13.0,
+      "0.99": 43871.0
+    },
+    "gaps_le_4_steps_frac_of_gaps": 0.8062245276028158,
+    "missing_bins_in_gaps_le_4_frac": 0.002682122110119641
+  },
+  "flow_stats_observed": {
+    "mean": 653.069091796875,
+    "std": 505.4440612792969,
+    "max": 2997.0,
+    "median": 549.0
+  },
+  "week_plot_sensors": [
+    {
+      "index": 293,
+      "id": "1120611",
+      "fwy": "I15-N"
+    },
+    {
+      "index": 153,
+      "id": "1108475",
+      "fwy": "I5-S"
+    },
+    {
+      "index": 362,
+      "id": "1108607",
+      "fwy": "I15-S"
+    }
+  ],
+  "adjacency": {
+    "nodes": 716,
+    "nonzero_total": 18035,
+    "nonzero_offdiag_edges": 17319,
+    "self_loops": 716,
+    "density_offdiag": 0.033830136344102826,
+    "symmetric_values": false,
+    "symmetric_structure": false,
+    "reciprocated_edge_frac": 0.7857266585830591,
+    "max_abs_asym": 0.9999998807907104,
+    "weight_min_nonzero": 0.01000183541327715,
+    "weight_max": 0.9999998807907104,
+    "out_degree": {
+      "mean": 24.18854748603352,
+      "min": 0,
+      "max": 70,
+      "median": 20.0
+    },
+    "in_degree": {
+      "mean": 24.18854748603352,
+      "min": 0,
+      "max": 68
+    },
+    "isolated_out": 8,
+    "isolated_in": 8
+  },
+  "neighbourhood": {
+    "sensor_index": 437,
+    "sensor_id": "1125559",
+    "fwy": "SR56-E",
+    "one_hop": 20,
+    "two_hop_total": 45,
+    "two_hop_only": 25,
+    "one_hop_ids_first10": [
+      "1115749",
+      "1108585",
+      "1122487",
+      "1113985",
+      "1123003",
+      "1123002",
+      "1108590",
+      "1115838",
+      "1108450",
+      "1108489"
+    ],
+    "one_hop_fwys": [
+      "I15-N",
+      "I15-S",
+      "SR56-E",
+      "SR56-W"
+    ],
+    "two_hop_fwys": [
+      "I15-N",
+      "I15-S",
+      "SR56-E",
+      "SR56-W"
+    ],
+    "mean_corr_2020": {
+      "one_hop": 0.8818551095825657,
+      "two_hop_only": 0.9083866879779214,
+      "beyond_two_hop": 0.862021466734673
+    },
+    "mean_corr_2020_deseasonalised_changes": {
+      "one_hop": 0.14630201395899053,
+      "two_hop_only": 0.14172896165255713,
+      "beyond_two_hop": 0.05340535423194651
+    }
+  }
+}
