@@ -78,7 +78,8 @@ def test_windows_inside_splits(prep):
     seen = set()
     for name, (a, b) in bounds.items():
         t = prep.idx[name]
-        first = prep.times[t - (T_IN - 1)]; last = prep.times[t + T_OUT]
+        first = prep.times[t - (T_IN - 1)]
+        last = prep.times[t + T_OUT]
         assert (first >= pd.Timestamp(a)).all() and (last < pd.Timestamp(b)).all()
         assert (np.diff(t) == 1).all()                              # contiguous, nothing skipped inside a split
         assert not (seen & set(t.tolist()))
@@ -114,7 +115,8 @@ def test_forward_fill_is_causal_and_limited():
     x = np.array([[1.0], [np.nan], [np.nan], [np.nan], [np.nan], [np.nan], [7.0]], dtype=np.float32)
     y = causal_ffill(x, FFILL_LIMIT)
     assert y[1:5, 0].tolist() == [1.0] * 4 and np.isnan(y[5, 0]) and y[6, 0] == 7.0
-    x2 = x.copy(); x2[6] = 100.0                                    # changing the future
+    x2 = x.copy()
+    x2[6] = 100.0                                    # changing the future
     assert np.array_equal(causal_ffill(x2, FFILL_LIMIT)[:6], y[:6], equal_nan=True)
 
 

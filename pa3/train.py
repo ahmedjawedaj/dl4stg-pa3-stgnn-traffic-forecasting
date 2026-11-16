@@ -16,7 +16,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def set_seed(seed):
-    random.seed(seed); np.random.seed(seed); torch.manual_seed(seed)
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
 
 
 def masked_mae(pred, y, m):
@@ -26,19 +28,26 @@ def masked_mae(pred, y, m):
 @torch.no_grad()
 def evaluate(model, loader, mean, std, keep_nodes=None):
     model.eval()
-    abs_sum = torch.zeros(4, dtype=torch.float64); sq_sum = torch.zeros(4, dtype=torch.float64)
+    abs_sum = torch.zeros(4, dtype=torch.float64)
+    sq_sum = torch.zeros(4, dtype=torch.float64)
     cnt = torch.zeros(4, dtype=torch.float64)
     kept = {"t": [], "pred": [], "true": [], "mask": []}
-    node_abs = torch.zeros(mean.shape[-1], dtype=torch.float64); node_cnt = torch.zeros_like(node_abs)
+    node_abs = torch.zeros(mean.shape[-1], dtype=torch.float64)
+    node_cnt = torch.zeros_like(node_abs)
     for x, y, m, t in loader:
         p = model(x) * std + mean
         e = (p - y).double()
         mf = m.double()
-        abs_sum += (e.abs() * mf).sum((0, 2)); sq_sum += (e ** 2 * mf).sum((0, 2)); cnt += mf.sum((0, 2))
-        node_abs += (e.abs() * mf).sum((0, 1)); node_cnt += mf.sum((0, 1))
+        abs_sum += (e.abs() * mf).sum((0, 2))
+        sq_sum += (e ** 2 * mf).sum((0, 2))
+        cnt += mf.sum((0, 2))
+        node_abs += (e.abs() * mf).sum((0, 1))
+        node_cnt += mf.sum((0, 1))
         if keep_nodes is not None:
-            kept["t"].append(t.numpy()); kept["pred"].append(p[:, :, keep_nodes].numpy())
-            kept["true"].append(y[:, :, keep_nodes].numpy()); kept["mask"].append(m[:, :, keep_nodes].numpy())
+            kept["t"].append(t.numpy())
+            kept["pred"].append(p[:, :, keep_nodes].numpy())
+            kept["true"].append(y[:, :, keep_nodes].numpy())
+            kept["mask"].append(m[:, :, keep_nodes].numpy())
     res = {"MAE": float(abs_sum.sum() / cnt.sum()), "RMSE": float(np.sqrt(sq_sum.sum() / cnt.sum())),
            "MAE_h": (abs_sum / cnt).tolist(), "RMSE_h": torch.sqrt(sq_sum / cnt).tolist(),
            "MAE_node": (node_abs / node_cnt.clamp(min=1)).tolist()}
@@ -55,7 +64,8 @@ def hardware():
         with open("/proc/cpuinfo") as f:
             for line in f:
                 if line.startswith("model name"):
-                    info["cpu"] = line.split(":", 1)[1].strip(); break
+                    info["cpu"] = line.split(":", 1)[1].strip()
+                    break
         info["logical_cpus"] = os.cpu_count()
         with open("/proc/meminfo") as f:
             info["mem_gb"] = round(int(f.readline().split()[1]) / 1024 ** 2, 1)
@@ -77,14 +87,13 @@ def main():
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--d", type=int, default=32)
     ap.add_argument("--de", type=int, default=10)
-    ap.add_argument("--topk", type=int, default=0)
-    ap.add_argument("--alpha", type=float, default=None, help="fixed hybrid alpha, default learnable")
     ap.add_argument("--epochs", type=int, default=20)
     ap.add_argument("--patience", type=int, default=4)
     ap.add_argument("--batch", type=int, default=64)
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--threads", type=int, default=0)
     ap.add_argument("--out", default=os.path.join(ROOT, "results", "runs"))
+    ap.add_argument("--skip", action="store_true", help="feed Z + H to the head (Q4(c) comparison only)")
     ap.add_argument("--tag", default="")
     ap.add_argument("--max_batches", type=int, default=0, help="smoke tests only: stop each epoch after this many batches")
     args = ap.parse_args()
@@ -93,9 +102,9 @@ def main():
 
     set_seed(args.seed)
     prep = Prepared(args.data)
-    mean = torch.from_numpy(prep.mean); std = torch.from_numpy(prep.std)
-    model = Forecaster(prep.N, args.graph, prep.adj, d=args.d, de=args.de, alpha=args.alpha,
-                       topk=args.topk or None)
+    mean = torch.from_numpy(prep.mean)
+    std = torch.from_numpy(prep.std)
+    model = Forecaster(prep.N, args.graph, prep.adj, d=args.d, de=args.de, skip=args.skip)
     n_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     opt = torch.optim.Adam(model.parameters(), lr=args.lr)
     train_loader = WindowLoader(prep, "train", args.batch, True, args.seed)
@@ -109,13 +118,19 @@ def main():
            "n_bad_stats": prep.n_bad_stats, "epochs": []}
     best, bad_epochs, train_time = float("inf"), 0, 0.0
     for ep in range(1, args.epochs + 1):
-        model.train(); t0 = time.perf_counter(); tot = 0.0; nb = 0
+        model.train()
+        t0 = time.perf_counter()
+        tot = 0.0
+        nb = 0
         for x, y, m, _ in train_loader:
             pred = model(x) * std + mean
             loss = masked_mae(pred, y, m)
-            opt.zero_grad(); loss.backward()
+            opt.zero_grad()
+            loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0)
-            opt.step(); tot += loss.item(); nb += 1
+            opt.step()
+            tot += loss.item()
+            nb += 1
             if args.max_batches and nb >= args.max_batches:
                 break
         ep_time = time.perf_counter() - t0
@@ -152,9 +167,6 @@ def main():
         A = model.adjacency()
         if A is not None and args.graph != "fixed":
             np.save(os.path.join(args.out, name + "_adj.npy"), A.numpy().astype(np.float32))
-            if args.graph == "hybrid":
-                np.save(os.path.join(args.out, name + "_adj_adaptive_part.npy"),
-                        model.adapt().numpy().astype(np.float32))
     np.savez_compressed(os.path.join(args.out, name + "_testpred.npz"), t=kept["t"], nodes=keep,
                         pred=kept["pred"].astype(np.float16), true=kept["true"].astype(np.float16),
                         mask=kept["mask"])

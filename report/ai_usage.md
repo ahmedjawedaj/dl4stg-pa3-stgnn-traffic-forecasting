@@ -45,7 +45,27 @@ test
 and ensure it is fully done
 ```
 
-**Output.** The tool re-checked the report against every requirement in the handout, wrote the `tests/` suite ({{n_tests}} tests), `scripts/verify_checkpoints.py` (all {{n_ckpt}} checkpoints reproduce their logged metrics) and `scripts/naive_baselines.py`, and fact-checked the text against the data and the LargeST paper and code. This led to these corrections: validation RMSE added to the result tables, the cause of the 8 all-missing timestamps identified (daylight saving), the claims about the prediction plots backed with measured numbers, a miscounted number of training runs fixed, and the LargeST adjacency description completed (OSRM distances within 4 km, Tables 1 and 4).
+**Output.** The tool re-checked the report against every requirement in the handout, wrote the `tests/` suite (27 tests at the time), `scripts/verify_checkpoints.py` (all 13 checkpoints at the time reproduced their logged metrics) and `scripts/naive_baselines.py`, and fact-checked the text against the data and the LargeST paper and code. This led to these corrections: validation RMSE added to the result tables, the cause of the 8 all-missing timestamps identified (daylight saving), the claims about the prediction plots backed with measured numbers, a miscounted number of training runs fixed, and the LargeST adjacency description completed (OSRM distances within 4 km, Tables 1 and 4).
+
+## Prompt 4
+
+```
+do we need any training or run on a GPU?
+```
+
+**Output.** The tool answered that no further training was needed and that a GPU is optional for this assignment.
+
+## Prompt 5
+
+```
+1 more deeper review is needed 
+map every request, requirement and constraint as per original assignment
+
+ensure nothing is over engineered
+any text content, copy, is following my writing style, no em dashes or semicolons
+```
+
+**Output.** The tool mapped every requirement in the handout to the report and code. It found that the forecast head received $Z + H$ instead of the specified $H$, changed the model to $\hat Y = f_{\text{head}}(H)$ and retrained the nine graph runs. The earlier skip-connection results are kept in a separate comparison table. It removed parts beyond the handout (the sanity baselines, the fixed-$\alpha$ ablation, an unused top-$k$ code path and extra tables and figures), and removed every em dash and semicolon from the report, code comments and README.
 
 ## Edits I made
 

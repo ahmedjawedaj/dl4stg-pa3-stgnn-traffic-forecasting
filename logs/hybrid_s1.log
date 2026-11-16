@@ -1,30 +1,26 @@
-/home/claude/repo/pa3/data.py:54: RuntimeWarning: Mean of empty slice
-  mean = np.nanmean(tr, axis=0)
-/usr/local/lib/python3.13/site-packages/numpy/lib/_nanfunctions_impl.py:1997: RuntimeWarning: Degrees of freedom <= 0 for slice.
-  var = nanvar(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
-/home/claude/repo/pa3/train.py:42: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
+/home/claude/repo/pa3/train.py:51: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
   res = {"MAE": float(abs_sum.sum() / cnt.sum()), "RMSE": float(np.sqrt(sq_sum.sum() / cnt.sum())),
-/home/claude/repo/pa3/train.py:123: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+/home/claude/repo/pa3/train.py:141: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
 Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
   rec["alpha"] = float(model.alpha())
-{"epoch": 1, "train_mae": 78.1366742799408, "val_mae": 58.59674975228578, "val_rmse": 92.29752296794796, "sec": 55.9184394920012, "alpha": 0.41628462076187134}
-{"epoch": 2, "train_mae": 53.542426458473415, "val_mae": 53.61376761462243, "val_rmse": 86.26882441599325, "sec": 55.985177046999524, "alpha": 0.2987825274467468}
-{"epoch": 3, "train_mae": 51.36777479661618, "val_mae": 52.45255144212446, "val_rmse": 84.55219602296673, "sec": 56.19465453999874, "alpha": 0.22603289783000946}
-{"epoch": 4, "train_mae": 50.2672419521978, "val_mae": 52.39196666416233, "val_rmse": 82.62989376186997, "sec": 56.26442808600041, "alpha": 0.17614305019378662}
-{"epoch": 5, "train_mae": 48.738888537297484, "val_mae": 51.65939348785286, "val_rmse": 82.73455100837673, "sec": 57.37083388100109, "alpha": 0.13988499343395233}
-{"epoch": 6, "train_mae": 48.00127433123701, "val_mae": 49.92343666556142, "val_rmse": 78.5949876171552, "sec": 58.9662059479997, "alpha": 0.11424574255943298}
-{"epoch": 7, "train_mae": 47.30223049448705, "val_mae": 48.944637666741414, "val_rmse": 78.13131445704364, "sec": 56.53580434000105, "alpha": 0.09510040283203125}
-{"epoch": 8, "train_mae": 47.108446103844706, "val_mae": 48.171999396314106, "val_rmse": 76.9431710174339, "sec": 55.591668917999414, "alpha": 0.08100936561822891}
-{"epoch": 9, "train_mae": 46.4807455900154, "val_mae": 47.574074403927895, "val_rmse": 76.38374597195521, "sec": 56.03215374199863, "alpha": 0.06941518187522888}
-{"epoch": 10, "train_mae": 46.25042337580891, "val_mae": 49.062981996739666, "val_rmse": 78.94564782446145, "sec": 56.44720012900143, "alpha": 0.06035809591412544}
-{"epoch": 11, "train_mae": 45.72410446611693, "val_mae": 48.00182144931192, "val_rmse": 76.88028482550493, "sec": 57.18456498999876, "alpha": 0.052198830991983414}
-{"epoch": 12, "train_mae": 45.6133376852845, "val_mae": 46.62457881041062, "val_rmse": 75.76008069870007, "sec": 59.09554641399882, "alpha": 0.04549836367368698}
-{"epoch": 13, "train_mae": 45.35112936162341, "val_mae": 47.43659114191649, "val_rmse": 76.61784421376147, "sec": 59.389511896999466, "alpha": 0.03960883617401123}
-{"epoch": 14, "train_mae": 45.23576985899434, "val_mae": 48.90384244500523, "val_rmse": 77.11957183817593, "sec": 58.72759408899947, "alpha": 0.03501012176275253}
-{"epoch": 15, "train_mae": 44.75729090094784, "val_mae": 45.86310098011027, "val_rmse": 74.1431180655163, "sec": 56.492294817000584, "alpha": 0.03104637749493122}
-{"epoch": 16, "train_mae": 44.63674889931045, "val_mae": 45.42238224979819, "val_rmse": 73.7648709981251, "sec": 56.36669250199884, "alpha": 0.027761733159422874}
-{"epoch": 17, "train_mae": 44.70599424991017, "val_mae": 45.85170767131142, "val_rmse": 74.18936715448471, "sec": 57.00862203399993, "alpha": 0.02508760802447796}
-{"epoch": 18, "train_mae": 44.379513405276995, "val_mae": 45.79133847653256, "val_rmse": 73.4858889956484, "sec": 59.31916940799965, "alpha": 0.022528067231178284}
-{"epoch": 19, "train_mae": 44.30197270711263, "val_mae": 45.17715749236175, "val_rmse": 73.26538885610364, "sec": 60.21439728400037, "alpha": 0.020174117758870125}
-{"epoch": 20, "train_mae": 44.26646101626759, "val_mae": 45.16346430709223, "val_rmse": 72.80920174836072, "sec": 60.19753484600005, "alpha": 0.01808692142367363}
-FINAL hybrid_s1 {"val": 45.16346430709223, "test_mae": 53.34685202920658, "test_rmse": 84.68734252481113, "train_time": 1149.3024944039971, "epochs": 20}
+{"epoch": 1, "train_mae": 104.88808164613928, "val_mae": 83.79473953644694, "val_rmse": 133.54036311773638, "sec": 65.02470176400038, "alpha": 0.5414170026779175}
+{"epoch": 2, "train_mae": 74.05466698123675, "val_mae": 78.2833487386804, "val_rmse": 125.14627702679267, "sec": 65.84028652500001, "alpha": 0.4507604241371155}
+{"epoch": 3, "train_mae": 69.44457670812832, "val_mae": 73.81164656338143, "val_rmse": 118.71908446238595, "sec": 67.1399831130002, "alpha": 0.38687559962272644}
+{"epoch": 4, "train_mae": 66.77694757736012, "val_mae": 72.52615798140847, "val_rmse": 117.21119957028387, "sec": 65.6030919599998, "alpha": 0.3461112082004547}
+{"epoch": 5, "train_mae": 65.20024913516852, "val_mae": 71.90937270044266, "val_rmse": 116.85379475824163, "sec": 65.68404451600145, "alpha": 0.31813788414001465}
+{"epoch": 6, "train_mae": 63.56066113525835, "val_mae": 69.65066994937307, "val_rmse": 114.02979140919757, "sec": 66.4315187000011, "alpha": 0.2999943494796753}
+{"epoch": 7, "train_mae": 62.56569969719225, "val_mae": 68.49993330671572, "val_rmse": 114.64871597621323, "sec": 65.84159265199924, "alpha": 0.28846102952957153}
+{"epoch": 8, "train_mae": 61.67884187403055, "val_mae": 69.74578048876508, "val_rmse": 116.09783492539286, "sec": 63.788054313999965, "alpha": 0.28182685375213623}
+{"epoch": 9, "train_mae": 60.55624988604547, "val_mae": 66.57695268331727, "val_rmse": 112.06035379062477, "sec": 67.66207594700063, "alpha": 0.2762938141822815}
+{"epoch": 10, "train_mae": 59.89976192953808, "val_mae": 66.62543626924231, "val_rmse": 112.6622068707803, "sec": 66.2459749640002, "alpha": 0.2736087441444397}
+{"epoch": 11, "train_mae": 59.05439357375404, "val_mae": 65.9532877871472, "val_rmse": 111.8031547453229, "sec": 65.50714279000022, "alpha": 0.27252817153930664}
+{"epoch": 12, "train_mae": 58.59790614393891, "val_mae": 66.88862740313438, "val_rmse": 113.08969556915095, "sec": 66.49483910799972, "alpha": 0.26773762702941895}
+{"epoch": 13, "train_mae": 58.02372363008871, "val_mae": 64.97464576302349, "val_rmse": 110.38325870482879, "sec": 63.709886745000404, "alpha": 0.2678440511226654}
+{"epoch": 14, "train_mae": 57.854479860955465, "val_mae": 65.37188192268016, "val_rmse": 110.03336603527411, "sec": 67.23411095400115, "alpha": 0.2672747075557709}
+{"epoch": 15, "train_mae": 57.543819531716935, "val_mae": 64.28419992668255, "val_rmse": 106.85567199443922, "sec": 69.05870694199984, "alpha": 0.2637474238872528}
+{"epoch": 16, "train_mae": 57.1116747760599, "val_mae": 64.61436237431566, "val_rmse": 106.54297261823469, "sec": 66.66493255600108, "alpha": 0.2621844410896301}
+{"epoch": 17, "train_mae": 56.977989217622685, "val_mae": 63.37000956556778, "val_rmse": 106.16334642528625, "sec": 65.66251285699946, "alpha": 0.2602880597114563}
+{"epoch": 18, "train_mae": 56.588186601037755, "val_mae": 63.5132860377297, "val_rmse": 105.9285795197735, "sec": 65.79466178199982, "alpha": 0.2589115500450134}
+{"epoch": 19, "train_mae": 56.4828214384819, "val_mae": 63.02689619601338, "val_rmse": 105.17894530124622, "sec": 65.23912512600145, "alpha": 0.257098913192749}
+{"epoch": 20, "train_mae": 56.18037426363141, "val_mae": 63.30707999911318, "val_rmse": 105.78478733247225, "sec": 67.24364282399983, "alpha": 0.2564637064933777}
+FINAL hybrid_s1 {"val": 63.02689619601338, "test_mae": 77.42108353735856, "test_rmse": 121.73344927460977, "train_time": 1321.870886139006, "epochs": 20}

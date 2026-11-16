@@ -110,7 +110,7 @@ If one or two of the three readings are missing, we use $3\times$ the mean of th
 | 15-minute bins with no reading | {{m15}} (2020: {{m15_2020}}, 2021: {{m15_2021}}) |
 | 15-minute bins partly observed (1 or 2 of 3 readings) | {{m_partial}} |
 | Sensors with no reading in 2020 and 2021 | {{never}} |
-| Sensors with no reading in 2021 (so none in validation or test) | {{never21}} |
+| Sensors with no reading in 2021 (none in validation or test) | {{never21}} |
 | Sensors more than 50% missing | {{over50}} |
 | Timestamps where every sensor is missing | {{allmiss_t}} |
 | Missing bins that belong to gaps of 1 hour or less | {{short_gap_frac}} |
@@ -145,7 +145,10 @@ The weekly plot shows the structure the models must learn: a strong daily cycle,
 
 ## Q3(c) Graph neighbourhoods
 
-We selected sensor {{nb_id}} on {{nb_fwy}}, whose number of neighbours equals the median. Its one-hop neighbourhood $N(i) = \{j: A_{ij}\neq 0\}$ has {{nb_one}} sensors. Paths of at most two edges reach {{nb_two}} sensors, {{nb_two_only}} of them not already one-hop. Both sets lie on {{nb_fwys}}, around the SR-56 / I-15 interchange.
+We selected sensor {{nb_id}} on {{nb_fwy}}, whose number of neighbours equals the median. Its one-hop neighbourhood $N(i) = \{j: A_{ij}\neq 0\}$ has {{nb_one}} sensors. Paths of at most two edges reach {{nb_two}} sensors, {{nb_two_only}} of them not already one-hop. Both sets lie on {{nb_fwys}}, around the SR-56 and I-15 interchange.
+
+* One-hop: {{nb_one_ids}}.
+* Two-hop only: {{nb_two_ids}}.
 
 ![One-hop (blue) and two-hop only (orange) neighbours of sensor {{nb_id}}.](figures/q3c_neighbourhood.png){width=62%}
 

@@ -117,7 +117,8 @@ def true_step(x):
 
 
 # (a)i least squares on the isolated slowdown, solved numerically as a check
-x0 = np.zeros(N); x0[20] = 1
+x0 = np.zeros(N)
+x0[20] = 1
 y = true_step(x0)
 feats = np.stack([x0, np.roll(x0, 1) + np.roll(x0, -1)], 1)   # [x_i, x_{i-1}+x_{i+1}]
 coef, *_ = np.linalg.lstsq(feats, y, rcond=None)
@@ -128,12 +129,14 @@ out["q2a_i"] = {"a": float(a_ls), "b": float(b_ls), "min_sse": sse}
 # (a)ii roll out fitted layer vs truth on a smooth bump
 idx = np.arange(N)
 bump = np.exp(-((idx - 20) ** 2) / 8)
-pred = [bump.copy()]; true = [bump.copy()]
+pred = [bump.copy()]
+true = [bump.copy()]
 for _ in range(20):
     p = pred[-1]
     pred.append(a_ls * p + b_ls * (np.roll(p, 1) + np.roll(p, -1)))
     true.append(true_step(true[-1]))
-pred = np.array(pred); true = np.array(true)
+pred = np.array(pred)
+true = np.array(true)
 vmax = max(pred.max(), true.max())
 fig, axs = plt.subplots(1, 2, figsize=(10, 4.2), sharey=True)
 for ax, M, title in [(axs[0], true, "True motion (np.roll(x, -1))"),
@@ -165,7 +168,8 @@ try:
     have_torch = True
 except ImportError:
     have_torch = False
-ok_b = True; ok_conv = True
+ok_b = True
+ok_conv = True
 for _ in range(200):
     x = rng.normal(size=N)
     pred_b = 0 * x + 0 * np.roll(x, 1) + 1 * np.roll(x, -1)
@@ -179,15 +183,18 @@ out["q2b"] = {"a": 0, "w_minus": 0, "w_plus": 1, "exact_on_200_random": bool(ok_
 
 # (c) history: a=0, b=1, c=-1
 a_c, b_c, c_c = 0.0, 1.0, -1.0
-ok_back = True; ok_fwd = True
+ok_back = True
+ok_fwd = True
 for _ in range(200):
     xp = rng.normal(size=N)
     # backward motion
-    xt = np.roll(xp, -1); xn = np.roll(xt, -1)
+    xt = np.roll(xp, -1)
+    xn = np.roll(xt, -1)
     pr = a_c * xt + b_c * (np.roll(xt, 1) + np.roll(xt, -1)) + c_c * xp
     ok_back &= np.allclose(pr, xn)
     # forward motion x_i(t+1) = x_{i-1}(t)
-    xt = np.roll(xp, 1); xn = np.roll(xt, 1)
+    xt = np.roll(xp, 1)
+    xn = np.roll(xt, 1)
     pr = a_c * xt + b_c * (np.roll(xt, 1) + np.roll(xt, -1)) + c_c * xp
     ok_fwd &= np.allclose(pr, xn)
 out["q2c"] = {"a": a_c, "b": b_c, "c": c_c, "exact_backward": bool(ok_back),

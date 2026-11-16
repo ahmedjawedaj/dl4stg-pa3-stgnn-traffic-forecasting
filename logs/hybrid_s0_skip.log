@@ -1,0 +1,30 @@
+/home/claude/repo/pa3/data.py:54: RuntimeWarning: Mean of empty slice
+  mean = np.nanmean(tr, axis=0)
+/usr/local/lib/python3.13/site-packages/numpy/lib/_nanfunctions_impl.py:1997: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  var = nanvar(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/claude/repo/pa3/train.py:42: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
+  res = {"MAE": float(abs_sum.sum() / cnt.sum()), "RMSE": float(np.sqrt(sq_sum.sum() / cnt.sum())),
+/home/claude/repo/pa3/train.py:123: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  rec["alpha"] = float(model.alpha())
+{"epoch": 1, "train_mae": 75.97754614296724, "val_mae": 56.994352576248026, "val_rmse": 91.27024717577888, "sec": 59.69176363999941, "alpha": 0.41335445642471313}
+{"epoch": 2, "train_mae": 52.74928654738463, "val_mae": 52.06484551873519, "val_rmse": 84.15260002617202, "sec": 57.363648182999896, "alpha": 0.2943774461746216}
+{"epoch": 3, "train_mae": 50.498030066707315, "val_mae": 50.123434658172414, "val_rmse": 80.84391833880044, "sec": 59.06419525799993, "alpha": 0.21448653936386108}
+{"epoch": 4, "train_mae": 49.000069943064986, "val_mae": 49.88864956721242, "val_rmse": 79.90335050536858, "sec": 57.94461440699979, "alpha": 0.16364742815494537}
+{"epoch": 5, "train_mae": 47.87885262188799, "val_mae": 48.91647831683951, "val_rmse": 78.34743683697482, "sec": 57.63014320000002, "alpha": 0.130116268992424}
+{"epoch": 6, "train_mae": 47.17191160441748, "val_mae": 49.66383952218826, "val_rmse": 80.38462171228961, "sec": 58.74326937499973, "alpha": 0.106174536049366}
+{"epoch": 7, "train_mae": 46.84544410775051, "val_mae": 47.84788485960595, "val_rmse": 76.08366140598851, "sec": 56.71849194100014, "alpha": 0.08944696933031082}
+{"epoch": 8, "train_mae": 46.069709687502225, "val_mae": 47.98447506238785, "val_rmse": 76.5450652055132, "sec": 59.33948956900076, "alpha": 0.07553436607122421}
+{"epoch": 9, "train_mae": 45.66245237812536, "val_mae": 47.865214295365604, "val_rmse": 76.51931034055833, "sec": 59.56586823199996, "alpha": 0.06507155299186707}
+{"epoch": 10, "train_mae": 45.30979970157255, "val_mae": 46.330604864847366, "val_rmse": 74.82846958265968, "sec": 59.675039405999996, "alpha": 0.05696401372551918}
+{"epoch": 11, "train_mae": 44.87462126101301, "val_mae": 45.62328651710384, "val_rmse": 73.91095018962905, "sec": 60.071243604999836, "alpha": 0.05022376403212547}
+{"epoch": 12, "train_mae": 44.78345360955688, "val_mae": 46.752835399984676, "val_rmse": 75.34606470185376, "sec": 61.92169242700038, "alpha": 0.044676270335912704}
+{"epoch": 13, "train_mae": 44.36675495918983, "val_mae": 47.27725814467802, "val_rmse": 75.82769699722299, "sec": 62.15037046799989, "alpha": 0.03977594152092934}
+{"epoch": 14, "train_mae": 44.117566871295644, "val_mae": 46.42051639951389, "val_rmse": 73.18196616959965, "sec": 61.42504749799991, "alpha": 0.03589107468724251}
+{"epoch": 15, "train_mae": 44.01323588776024, "val_mae": 44.840897057277864, "val_rmse": 72.63354113161165, "sec": 61.39735405600004, "alpha": 0.03262675553560257}
+{"epoch": 16, "train_mae": 43.80838160697228, "val_mae": 45.64942986795477, "val_rmse": 73.59444645153857, "sec": 62.27663098300036, "alpha": 0.029660237953066826}
+{"epoch": 17, "train_mae": 43.60819042184965, "val_mae": 44.73916536542746, "val_rmse": 71.8472800531286, "sec": 64.01222022699949, "alpha": 0.027142291888594627}
+{"epoch": 18, "train_mae": 43.432518443123236, "val_mae": 44.156188181846794, "val_rmse": 71.70315544210925, "sec": 62.882353639999565, "alpha": 0.02501508593559265}
+{"epoch": 19, "train_mae": 43.24354810315186, "val_mae": 44.3870151988608, "val_rmse": 71.87280855216835, "sec": 66.26479984999969, "alpha": 0.0231289304792881}
+{"epoch": 20, "train_mae": 43.055141949262776, "val_mae": 43.980976920698275, "val_rmse": 71.24362466900034, "sec": 63.06976589500027, "alpha": 0.02166450396180153}
+FINAL hybrid_s0 {"val": 43.980976920698275, "test_mae": 52.61313948081729, "test_rmse": 83.02028259261311, "train_time": 1211.208001859999, "epochs": 20}

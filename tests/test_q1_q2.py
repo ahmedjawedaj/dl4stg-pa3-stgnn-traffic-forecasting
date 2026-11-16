@@ -65,7 +65,8 @@ def test_q1c_table():
 
 
 def test_q2a_least_squares():
-    x = np.zeros(40); x[20] = 1
+    x = np.zeros(40)
+    x[20] = 1
     y = np.roll(x, -1)
     F = np.stack([x, np.roll(x, 1) + np.roll(x, -1)], 1)
     (a, b), *_ = np.linalg.lstsq(F, y, rcond=None)
@@ -96,5 +97,7 @@ def test_q2c_history_both_directions():
     f = lambda xt, xp: np.roll(xt, 1) + np.roll(xt, -1) - xp      # a=0, b=1, c=-1
     for _ in range(50):
         xp = rng.normal(size=40)
-        xt = np.roll(xp, -1); assert np.allclose(f(xt, xp), np.roll(xt, -1))   # backward
-        xt = np.roll(xp, 1); assert np.allclose(f(xt, xp), np.roll(xt, 1))     # forward
+        xt = np.roll(xp, -1)
+        assert np.allclose(f(xt, xp), np.roll(xt, -1))   # backward
+        xt = np.roll(xp, 1)
+        assert np.allclose(f(xt, xp), np.roll(xt, 1))     # forward

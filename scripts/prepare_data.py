@@ -11,7 +11,8 @@ Output: data/sd_2020_2021.npz with
   times15  (T15,) int64 ns timestamps (bin start)
   ids      (716,) sensor IDs in the column order of flow15
   adj      (716, 716) float32 road-distance adjacency, rows and columns in the same order as ids
-  lat, lng (716,)
+  lat, lng (716,)   sensor coordinates
+  fwy      (716,)   freeway and direction, e.g. "I15-N"
   missing5 scalar fraction of missing 5-minute readings
 
 The SD selection and adjacency slicing follow the official generate_sd_dataset.ipynb:
@@ -89,9 +90,12 @@ def main():
         print(year, "raw", x.shape, dtype, ts[0], ts[-1])
         assert ts[0] == pd.Timestamp(f"{year}-01-01 00:00:00")
         assert ts[-1] == pd.Timestamp(f"{year}-12-31 23:55:00")
-        miss5_num += int(np.isnan(x).sum()); miss5_den += x.size
+        miss5_num += int(np.isnan(x).sum())
+        miss5_den += x.size
         t15, f15, n15 = to_15min(idx, x)
-        times_all.append(t15); flows.append(f15); n_obs_all.append(n15)
+        times_all.append(t15)
+        flows.append(f15)
+        n_obs_all.append(n15)
 
     times15 = np.concatenate(times_all)
     flow15 = np.concatenate(flows)
@@ -105,7 +109,7 @@ def main():
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     np.savez_compressed(args.out, flow15=flow15, n_obs=n_obs, times15=times15, ids=np.array(ids),
                         adj=adj, lat=sd.Lat.values, lng=sd.Lng.values,
-                        fwy=np.array(sd.Fwy.astype(str).tolist()), direction=np.array(sd.Direction.astype(str).tolist()),
+                        fwy=np.array(sd.Fwy.astype(str).tolist()),
                         missing5=miss5_num / miss5_den)
     print("saved", args.out, flow15.shape, "missing 5-min", miss5_num / miss5_den,
           "missing 15-min", float(np.isnan(flow15).mean()))

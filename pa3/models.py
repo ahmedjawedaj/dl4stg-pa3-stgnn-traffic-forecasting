@@ -43,44 +43,36 @@ class TemporalEncoder(nn.Module):
 class AdaptiveAdjacency(nn.Module):
     """A_adaptive = row-softmax(ReLU(E1 E2^T)), E1, E2 in R^{N x de}, randomly initialised."""
 
-    def __init__(self, n, de=10, topk=None):
+    def __init__(self, n, de=10):
         super().__init__()
         self.E1 = nn.Parameter(torch.randn(n, de))
         self.E2 = nn.Parameter(torch.randn(n, de))
-        self.topk = topk
 
     def forward(self):
-        logits = F.relu(self.E1 @ self.E2.T)
-        if self.topk:
-            # sparsify before the softmax: keep the k largest logits per row, the rest get zero weight
-            kth = logits.topk(self.topk, dim=1).values[:, -1:]
-            logits = logits.masked_fill(logits < kth, float("-inf"))
-        return torch.softmax(logits, dim=1)
+        return torch.softmax(F.relu(self.E1 @ self.E2.T), dim=1)
 
 
 class Forecaster(nn.Module):
     """graph in {"none", "fixed", "adaptive", "hybrid"}.
 
-    Z = f_temporal(X); H = ReLU(A_hat Z W_g); Y_hat = f_head(Z + H).
-    The skip Z + H makes "none" exactly this model with the graph block removed, so the
-    temporal-only baseline and the three graph variants differ only in the graph term.
+    Graph models: Z = f_temporal(X), H = ReLU(A_hat Z W_g), Y_hat = f_head(H).
+    Temporal-only ("none"): the same encoder and head without the graph layer, Y_hat = f_head(Z).
+    skip=True gives the head Z + H instead of H (used only for the comparison in Q4(c)).
     """
 
-    def __init__(self, n, graph="fixed", adj=None, d=32, de=10, alpha=None, topk=None):
+    def __init__(self, n, graph="fixed", adj=None, d=32, de=10, skip=False):
         super().__init__()
         self.graph = graph
+        self.skip = skip
         self.enc = TemporalEncoder(d)
         if graph != "none":
             self.Wg = nn.Linear(d, d, bias=False)
         if graph in ("fixed", "hybrid"):
             self.register_buffer("A_fixed", row_normalise_with_self_loops(adj))
         if graph in ("adaptive", "hybrid"):
-            self.adapt = AdaptiveAdjacency(n, de, topk)
+            self.adapt = AdaptiveAdjacency(n, de)
         if graph == "hybrid":
-            if alpha is None:                               # learn alpha in [0, 1] through a sigmoid
-                self.alpha_logit = nn.Parameter(torch.zeros(()))
-            else:
-                self.register_buffer("alpha_logit", torch.logit(torch.tensor(float(alpha))))
+            self.alpha_logit = nn.Parameter(torch.zeros(()))   # alpha = sigmoid(logit), learned, starts at 0.5
         self.head = nn.Sequential(nn.Linear(d, d), nn.ReLU(), nn.Linear(d, T_OUT))
 
     def alpha(self):
@@ -100,6 +92,6 @@ class Forecaster(nn.Module):
         z = self.enc(x)                                     # (B, N, d)
         if self.graph != "none":
             A = self.adjacency()
-            h = F.relu(torch.einsum("ij,bjd->bid", A, self.Wg(z)))   # graph product over nodes, per batch item
-            z = z + h
+            h = F.relu(torch.einsum("ij,bjd->bid", A, self.Wg(z)))   # H, graph product over nodes per batch item
+            z = z + h if self.skip else h
         return self.head(z).transpose(1, 2)                 # (B, 4, N)

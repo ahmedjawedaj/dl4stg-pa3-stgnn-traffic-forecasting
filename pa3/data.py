@@ -38,7 +38,7 @@ class Prepared:
         self.T, self.N = self.flow.shape
         self.mask = ~np.isnan(self.flow)                       # observed targets
 
-        # window index t = position of the last input step; window covers t-7 .. t+4
+        # window index t is the position of the last input step. The window covers t-7 to t+4
         starts = {}
         for name, (a, b) in SPLITS.items():
             in_split = (self.times >= pd.Timestamp(a)) & (self.times <= pd.Timestamp(b))
@@ -58,7 +58,8 @@ class Prepared:
             mean = np.nanmean(tr, axis=0)
             std = np.nanstd(tr, axis=0)
         bad = ~np.isfinite(mean) | ~np.isfinite(std) | (std < 1e-3)
-        mean[bad] = g_mean; std[bad] = g_std
+        mean[bad] = g_mean
+        std[bad] = g_std
         self.mean, self.std = mean.astype(np.float32), std.astype(np.float32)
         self.n_bad_stats = int(bad.sum())
 

@@ -25,9 +25,10 @@ def main():
         ckpt = js[:-5] + ".pt"
         if not os.path.exists(ckpt):
             continue
-        log = json.load(open(js)); a = log["args"]
+        log = json.load(open(js))
+        a = log["args"]
         torch.manual_seed(0)
-        m = Forecaster(prep.N, a["graph"], prep.adj, d=a["d"], de=a["de"], alpha=a["alpha"], topk=a["topk"] or None)
+        m = Forecaster(prep.N, a["graph"], prep.adj, d=a["d"], de=a["de"], skip=a.get("skip", False))
         m.load_state_dict(torch.load(ckpt))
         rec = {}
         for split in ("val", "test"):
