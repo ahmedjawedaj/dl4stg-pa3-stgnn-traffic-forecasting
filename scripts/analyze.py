@@ -1,7 +1,7 @@
 """Q6: comparison table, predicted vs actual plots and learned graph analysis.
 
 Run after run_all.sh: python scripts/analyze.py --seeds 0 1 2
-Writes results/q6.json, results/table_main.md and figures/q6_*.png
+Writes results/q6.json, results/table_main.md, results/table_skip.md and figures/q6_*.png
 """
 import argparse
 import json

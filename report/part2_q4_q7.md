@@ -142,7 +142,7 @@ For each sensor we take its 10 strongest learned out-neighbours from the adaptiv
 | `scripts/prepare_data.py` | extracts SD for 2020 and 2021, 15-minute sums, adjacency submatrix |
 | `scripts/q3_analysis.py` | missing values, weekly plot, graph statistics, neighbourhoods |
 | `pa3/data.py`, `pa3/models.py`, `pa3/train.py` | windows and splits, models, training and evaluation |
-| `run_all.sh` | trains the four models for the given seeds |
+| `run_all.sh` | trains the four models and the three skip-connection runs for the given seeds |
 | `scripts/analyze.py` | Q6 table, plots and graph analysis |
 | `scripts/verify_checkpoints.py`, `tests/` | checkpoint re-evaluation, {{n_tests}} automated tests |
 | `report/build.py` | fills every number in this report from `results/` and builds the PDF |
@@ -162,7 +162,7 @@ python scripts/analyze.py --seeds 0 1 2
 python report/build.py
 ```
 
-The skip-connection runs of Q4(c) use `python -m pa3.train --graph <fixed|adaptive|hybrid> --seed <s> --skip --tag _skip`.
+`run_all.sh` also trains the skip-connection runs of Q4(c), each with `python -m pa3.train --graph <fixed|adaptive|hybrid> --seed <s> --skip --tag _skip`.
 
 **Hyperparameters.** $d = 32$, temporal kernel 3 (two layers), one graph layer, head $32\to 32\to 4$, $d_e = 10$, hybrid $\alpha$ learned (initial 0.5), Adam with learning rate $10^{-3}$, batch 64, gradient clipping 5, at most 20 epochs, patience 4, masked MAE loss, per-sensor z-score from 2020, input forward-fill limit 4 steps. Seeds {{seeds}}. Epochs run: {{epochs_note}}.
 

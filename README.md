@@ -38,7 +38,7 @@ Training times are wall-clock CPU time for the seed 0 runs (Intel Xeon, 2 logica
 | `pa3/data.py` | forecasting windows, chronological splits, normalisation |
 | `pa3/models.py` | temporal convolution encoder, graph convolution (fixed, adaptive or hybrid adjacency), MLP head |
 | `pa3/train.py` | training and evaluation, one run per call |
-| `run_all.sh` | trains the four models for the given seeds |
+| `run_all.sh` | trains the four models and the three skip-connection runs for the given seeds |
 | `scripts/analyze.py` | comparison table, prediction plots, learned-graph analysis |
 | `scripts/verify_checkpoints.py` | reloads every saved checkpoint and checks it reproduces its logged metrics |
 | `tests/` | pytest suite |
@@ -73,14 +73,14 @@ The raw files are about 15 GB and are not tracked. `prepare_data.py` reads only 
 python scripts/prepare_data.py --raw_dir data/raw
 python scripts/q1_q2.py
 python scripts/q3_analysis.py
-./run_all.sh 0 1 2                    # about 1 hour per seed on a 2-core CPU
+./run_all.sh 0 1 2                    # about 2 hours per seed on a 2-core CPU
 python scripts/analyze.py --seeds 0 1 2
 python scripts/verify_checkpoints.py
 PA3_RAW_DIR=data/raw python -m pytest tests
 python report/build.py                # needs pandoc and xelatex
 ```
 
-A single model can be trained with `python -m pa3.train --graph {none,fixed,adaptive,hybrid} --seed 0`. The skip-connection comparison uses `--skip --tag _skip`. Each run writes `results/runs/<graph>_s<seed>.json` with its configuration, per-epoch log, metrics, hardware and timing.
+A single model can be trained with `python -m pa3.train --graph {none,fixed,adaptive,hybrid} --seed 0`. The skip-connection comparison adds `--skip --tag _skip` (`run_all.sh` already runs it). Each run writes `results/runs/<graph>_s<seed>.json` with its configuration, per-epoch log, metrics, hardware and timing.
 
 ## Configuration
 

@@ -156,8 +156,6 @@ def main():
     assert em_dash not in filled and en_dash not in filled, "dash character found in the report text"
     prose = re.sub(r"```.*?```", "", filled, flags=re.S)       # code blocks may contain shell syntax
     assert semicolon not in prose, "semicolon found in the report text"
-    if "(GitHub link to be added at submission)" in filled:
-        print("WARNING: no GitHub link yet. Rebuild with PA3_GITHUB=<repo url> before submitting.")
     os.makedirs(os.path.join(HERE, "build"), exist_ok=True)
     md = os.path.join(HERE, "build", "report.md")
     open(md, "w").write(filled)
