@@ -130,6 +130,7 @@ def values():
     for k in ("train", "val", "test"):
         v[f"n_{k}"] = f"{sp[k]['windows']:,}"
         v[f"{k}_first"], v[f"{k}_last"] = sp[k]["first_input"], sp[k]["last_target"]
+    v["hw_short"] = f"{hw.get('cpu', 'unknown CPU').split(' Processor')[0].replace('(R)', '')}, {hw.get('logical_cpus', '?')} logical CPUs"
     v["hw"] = (f"{hw.get('cpu', 'unknown CPU')}, {hw.get('logical_cpus', '?')} logical CPUs, {hw.get('mem_gb', '?')} GB RAM, "
                f"PyTorch {hw['torch']} on CPU ({hw['threads']} threads), Python {hw['python']}, {hw['platform']}")
 
@@ -155,8 +156,8 @@ def main():
     assert em_dash not in filled and en_dash not in filled, "dash character found in the report text"
     prose = re.sub(r"```.*?```", "", filled, flags=re.S)       # code blocks may contain shell syntax
     assert semicolon not in prose, "semicolon found in the report text"
-    if "EDITS_PLACEHOLDER" in filled:
-        print("WARNING: the AI usage section still has EDITS_PLACEHOLDER. Fill it in before submitting.")
+    if "(GitHub link to be added at submission)" in filled:
+        print("WARNING: no GitHub link yet. Rebuild with PA3_GITHUB=<repo url> before submitting.")
     os.makedirs(os.path.join(HERE, "build"), exist_ok=True)
     md = os.path.join(HERE, "build", "report.md")
     open(md, "w").write(filled)
