@@ -1,7 +1,7 @@
 """Fill the {{placeholders}} in report/*.md from results/*.json and render the PDF with pandoc and xelatex.
 
 Run: python report/build.py   (writes report/DL4STG_PA3_report.pdf)
-Set PA3_GITHUB to the repository URL to put it on the first page.
+The repository URL on the first page can be overridden with PA3_GITHUB.
 """
 import glob
 import json
@@ -25,7 +25,7 @@ def pct(x, nd=2):
 
 
 def values():
-    v = {"github": os.environ.get("PA3_GITHUB", "(GitHub link to be added at submission)"),
+    v = {"github": os.environ.get("PA3_GITHUB", "https://github.com/ahmedjawedaj/dl4stg-pa3-stgnn-traffic-forecasting"),
          "mirror": "`ttydsc30/TrafficForecast-LargeST-Project-Dataset`"}
 
     q = load("q1_q2.json")
